@@ -10,13 +10,15 @@ import { PostsComponent } from './shared/component/posts/posts.component';
 import { PostsDashComponent } from './shared/component/posts-dash/posts-dash.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsFormComponent } from './shared/component/posts-form/posts-form.component';
+import { ConfDialogComponent } from './shared/component/conf-dialog/conf-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
     PostsDashComponent,
-    PostsFormComponent
+    PostsFormComponent,
+    ConfDialogComponent
   ],
   imports: [
     BrowserModule,

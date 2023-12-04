@@ -57,11 +57,17 @@ export class PostsFormComponent implements OnInit {
     })
   }
   onPostAdd() {
-    let newPost = this.postForm.value;
+    if(this.postForm.valid){
+       let newPost = this.postForm.value;
     this._postsService.sendPostObject(newPost)
     this.postForm.reset();
     this._matDialRef.close()
     this._matSnackbar.openSnackBarNot("Post Added Succesfully", "close")
+  }else{
+      this._matSnackbar.openSnackBarNot("Enter All details", "close")
+
+    }
+   
   }
   onPostUpdate() {
 
@@ -72,5 +78,9 @@ export class PostsFormComponent implements OnInit {
 
     this._matDialRef.close()
     this._matSnackbar.openSnackBarNot("Post Updated Succesfully", "close")
+  }
+
+  onCloseDialog(){
+    this._matDialRef.close()
   }
 }
