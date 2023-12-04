@@ -4,6 +4,7 @@ import { Ipost } from '../../models/posts';
 import { PostsService } from '../../services/posts.service';
 import { DialogRef } from '@angular/cdk/dialog';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 
 
@@ -23,7 +24,10 @@ export class PostsFormComponent implements OnInit {
   updObj !: Ipost;
   updateId !: string;
 
-  private _postsService = inject(PostsService)
+  private _postsService = inject(PostsService);
+  private _matSnackbar = inject(SnackBarService);
+
+
 
   constructor(
     private _matDialRef: MatDialogRef<PostsFormComponent>,
@@ -37,7 +41,7 @@ export class PostsFormComponent implements OnInit {
       this.updObj = editPost
       this.updateId = editPost.postId!;
       console.log(editPost);
-      
+
     }
   }
 
@@ -57,14 +61,16 @@ export class PostsFormComponent implements OnInit {
     this._postsService.sendPostObject(newPost)
     this.postForm.reset();
     this._matDialRef.close()
+    this._matSnackbar.openSnackBarNot("Post Added Succesfully", "close")
   }
   onPostUpdate() {
 
-    
+
     let uptdObj = this.postForm.value;
     console.log(this.updObj);
-    this._postsService.senUpdateObject(uptdObj, this.updateId) 
-   
+    this._postsService.senUpdateObject(uptdObj, this.updateId)
+
     this._matDialRef.close()
+    this._matSnackbar.openSnackBarNot("Post Updated Succesfully", "close")
   }
 }

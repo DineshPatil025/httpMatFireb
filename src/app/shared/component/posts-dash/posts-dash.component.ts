@@ -2,8 +2,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Ipost } from '../../models/posts';
 import { PostsService } from '../../services/posts.service';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { Dialog } from '@angular/cdk/dialog';
 import { PostsFormComponent } from '../posts-form/posts-form.component';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-posts-dash',
@@ -14,7 +14,8 @@ export class PostsDashComponent implements OnInit {
 
 
   postsArr !: Array<Ipost>
-  private _postsService = inject(PostsService)
+  private _postsService = inject(PostsService);
+  private _matSnackbar = inject(SnackBarService)
   constructor(private _matDialog: MatDialog) { }
 
   ngOnInit(): void {

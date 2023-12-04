@@ -9,14 +9,18 @@
 
   <mat-toolbar color="primary" class="d-flex justify-content-between">
     <div>
-      <button mat-icon-button routerLink="/posts" (click)="sidebar.open()">
+      <button mat-icon-button routerLink="/posts" (click)="sidebar.open()"
+      
+      >
         <mat-icon>menu</mat-icon>
       </button>
       <button mat-button routerLink="/posts">Posts</button>
     </div>
     <div>
 
-      <button mat-raised-button>Log Out</button>
+      <button mat-raised-button
+      matTooltip="Click to Logout"
+      >Log Out</button>
     </div>
   </mat-toolbar>
 

@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, Subject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Ipost, } from '../models/posts';
+import { SnackBarService } from './snack-bar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class PostsService {
 
   private sendDelePost$ = new Subject;
   sendUpdDeltAsObs$ = this.sendDelePost$.asObservable();
-
+private _matSnackbar = inject(SnackBarService);
 
   constructor() { }
 
@@ -72,12 +73,7 @@ export class PostsService {
       this.sendDelePost$.next(postId)
     })
 
-
-
-
-
-
-    // this.sendDelePost$()
+    this._matSnackbar.openSnackBarNot("Post Deleted Succesfully", "close")
 
   }
 }

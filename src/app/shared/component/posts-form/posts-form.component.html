@@ -26,9 +26,12 @@
 
 
     <mat-dialog-actions>
-        <button mat-raised-button color="primary" *ngIf="!inEditMode">Add Post</button>
+        <button mat-raised-button color="primary" *ngIf="!inEditMode"
+        matTooltip="Click to Add New Post"
+        >Add Post</button>
         <button mat-raised-button color="primary" type="button" *ngIf="inEditMode"
         (click) = "onPostUpdate()"
+        matTooltip="Click to Update Post"
         >Update Post</button>
     </mat-dialog-actions>
 
