@@ -3,16 +3,18 @@
         <div class="col-md-8 offset-2">
 
             <h3 class="text-center">Add Post
-                <button mat-mini-fab color="primary" (click)="addPost()"
-                matTooltip="Click to add new Post"
-                >
+                <button mat-mini-fab color="primary" (click)="addPost()" matTooltip="Click to add new Post">
                     <mat-icon>add</mat-icon>
                 </button>
             </h3>
-            <app-posts 
-            [post]="post" *ngFor="let post of postsArr" 
-            (emitPost) = "patchEditObj($event)"
-            ></app-posts>
+            <div *ngIf="postsArr.length>0;else noPosts">
+                <app-posts [post]="post" *ngFor="let post of postsArr" (emitPost)="patchEditObj($event)"></app-posts>
+            </div>
+            <ng-template #noPosts>
+                <h3 class="alert alert-info">No Posts Added Yet !!!!!!!!!</h3>
+            </ng-template>
+
+
         </div>
     </div>
 </div>
