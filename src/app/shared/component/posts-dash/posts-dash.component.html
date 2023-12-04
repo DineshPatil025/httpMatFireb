@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-2">
+
+            <h3 class="text-center">Add Post
+                <button mat-mini-fab color="primary" (click)="addPost()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </h3>
+            <app-posts 
+            [post]="post" *ngFor="let post of postsArr" 
+            (emitPost) = "patchEditObj($event)"
+            ></app-posts>
+        </div>
+    </div>
+</div>
