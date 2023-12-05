@@ -8,9 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { PostsComponent } from './shared/component/posts/posts.component';
 import { PostsDashComponent } from './shared/component/posts-dash/posts-dash.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PostsFormComponent } from './shared/component/posts-form/posts-form.component';
 import { ConfDialogComponent } from './shared/component/conf-dialog/conf-dialog.component';
+import { PostsInterceptorService } from './shared/services/posts-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,14 @@ import { ConfDialogComponent } from './shared/component/conf-dialog/conf-dialog.
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: PostsInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

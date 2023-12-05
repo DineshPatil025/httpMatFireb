@@ -55,8 +55,6 @@ export class PostsDashComponent implements OnInit {
   }
 
   patchEditObj(post: Ipost) {
-    console.log(post);
-    
     const matDialConf = new MatDialogConfig;
     matDialConf.width = "500px";
     matDialConf.data = post;

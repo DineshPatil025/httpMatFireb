@@ -11,7 +11,7 @@ import { SnackBarService } from './snack-bar.service';
 export class PostsService {
 
   // postUrl: string = `${environment.baseUrl}/posts.json `;
-  postUrl:string = `${environment.baseUrl}/posts.json`;
+  postUrl: string = `${environment.baseUrl}/posts.json`;
 
 
 
@@ -26,7 +26,7 @@ export class PostsService {
 
   private sendDelePost$ = new Subject;
   sendUpdDeltAsObs$ = this.sendDelePost$.asObservable();
-private _matSnackbar = inject(SnackBarService);
+  private _matSnackbar = inject(SnackBarService);
 
   constructor() { }
 
@@ -49,9 +49,8 @@ private _matSnackbar = inject(SnackBarService);
       .subscribe((res: any) => {
         this.sendPost$.next({ ...newPost, postId: res['name'] })
       })
-
-
   }
+
   senUpdateObject(updtObj: Ipost, postId: string) {
 
     let updateUrl = `${environment.baseUrl}/posts/${postId}.json`;
@@ -59,7 +58,6 @@ private _matSnackbar = inject(SnackBarService);
       .subscribe((res: any) => {
         this.sendUpdPost$.next({ ...res, postId: postId })
       })
-
   }
 
 
